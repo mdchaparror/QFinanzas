@@ -1,4 +1,4 @@
-//mdchaparror@gmail.com
+
 #include "principal.h"
 #include <QApplication>
 
