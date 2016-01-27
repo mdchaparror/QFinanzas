@@ -4,6 +4,8 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include "ingresos.h"
+#include "global.h"
 namespace Ui {
 class principal;
 }

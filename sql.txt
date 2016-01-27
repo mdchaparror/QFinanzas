@@ -1,0 +1,27 @@
+"INSERT INTO Ingresos(Fecha,Detalle,Valor_Devengado, Bonificacion,APF,EPS,AFSP,Valor_Neto) VALUES( ?, ?, ?, ?,?,?,?,?)"
+"INSERT INTO compras(Fecha,Descripcion,Subtotal, IVA,Total,Metodo_De_Pago,N_Cuotas) VALUES( ?, ?, ?, ?,?,?,?)"
+
+"CREATE  TABLE IF NOT EXISTS \
+                                 compras (ID  integer PRIMARY KEY NOT NULL,\
+                                          Fecha TEXT,\
+                                          Descripcion TEXT,\
+                                          Subtotal DOUBLE,\
+                                          IVA DOUBLE,\
+                                          Total DOUBLE,\
+                                          Metodo_De_Pago TEXT,\
+                                          N_Cuotas integer DEFAULT 1)";   // Crea la tabla
+
+"CREATE  TABLE IF NOT EXISTS \
+                                ingresos (ID  integer PRIMARY KEY NOT NULL,\
+                                          Fecha TEXT,\
+                                          Detalle TEXT,\
+                                          Valor_Devengado DOUBLE,\
+                                          Bonificacion DOUBLE,\
+                                          APF DOUBLE,\
+                                          EPS DOUBLE,\
+                                          AFSP DOUBLE,\
+                                          Valor_Neto DOUBLE)";   // Crea la tabl
+
+
+CREATE  TABLE IF NOT EXISTS \
+                                    METODOS_PAGO(METODO  TEXT PRIMARY KEY NOT NULL)";   // Crea la tabla

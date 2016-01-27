@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,8 +13,20 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        principal.cpp
+        principal.cpp \
+    ingresos.cpp \
+    global.cpp \
+    basedatos.cpp \
+    compra.cpp
 
-HEADERS  += principal.h
+HEADERS  += principal.h \
+    ingresos.h \
+    global.h \
+    basedatos.h \
+    compra.h
 
 FORMS    += principal.ui
+
+OTHER_FILES += \
+    .gitignore \
+    sql.txt
