@@ -2,7 +2,7 @@
 #define PRINCIPAL_H
 
 #include <QMainWindow>
-
+#include <QDebug>
 namespace Ui {
 class principal;
 }
