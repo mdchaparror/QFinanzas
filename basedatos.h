@@ -14,17 +14,19 @@ class BaseDatos : public QObject
      Q_OBJECT
 public:
   explicit BaseDatos(QObject *parent = 0);
-    static int TABLA_COMPRAS;
-    static int TABLA_INGRESOS;
-    static int TABLA_METODOSPAGOS;
+    static const int TABLA_COMPRAS;
+    static const int TABLA_INGRESOS;
+    static const int TABLA_METODOSPAGOS;
 
 signals:
     void table_changed(QString table);
+
 public slots:
 
     void open(QString x);
     void close();
-
+    bool insert(QStringList registro, int tabla);
+    bool createTable(int tabla);
 private:
 
     QSqlDatabase database;
