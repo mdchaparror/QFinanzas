@@ -4,7 +4,7 @@ Ingreso::Ingreso()
 {
      id=0;
      fecha="0000-00-00";
-     descripcion="SULEDO";
+     descripcion="SUELDO";
      valorDevengado=0.0;
      bono=0.0;
      aporteAFP=0.0;
@@ -45,7 +45,7 @@ void Ingreso::setVneto(double x){
 QStringList Ingreso::toStringList()
 {
     QStringList reg;
-    reg.append(QString::number(id));
+  //  reg.append(QString::number(id));
     reg.append(fecha);
     reg.append(descripcion);
     reg.append(QString::number(valorDevengado));

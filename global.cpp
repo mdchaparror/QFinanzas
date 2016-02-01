@@ -5,10 +5,18 @@
 
 QString global::dir_bd="sqliteBD/";
 QString global::usuario="mdchaparror";
-int porcentajeAPF=4;
-int porcentajeEPS=4;
-int porcentajeAFSP=1;
-int porcentajeIVA=16;
-int porcentajeConsumo=4;
+QStringList global::metodosPago;
+int global::porcentajeAPF=4;
+int global::porcentajeEPS=4;
+int global::porcentajeAFSP=1;
+int global::porcentajeIVA=16;
+int global::porcentajeConsumo=4;
 
 
+
+
+void global::setMetodoPago(QStringList x)
+{
+    global::metodosPago.clear();
+    global::metodosPago = x;
+}

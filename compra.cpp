@@ -27,14 +27,14 @@ compra::compra(int id,QString fecha, QString det,double sub, double iva,double c
 QStringList compra::toStringList()
 {
     QStringList reg;
-    reg.append(QString::number(id));
+    //reg.append(QString::number(id));
     reg.append(fecha);
     reg.append(descripcion);
-    reg.append(metodoPago);
     reg.append(QString::number(subValor));
     reg.append(QString::number(impIVA));
     reg.append(QString::number(impConsumo));
     reg.append(QString::number(valorTotal));
+    reg.append(metodoPago);
     reg.append(QString::number(numeroCuotas));
 
     return reg;

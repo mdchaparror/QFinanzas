@@ -17,13 +17,17 @@ SOURCES += main.cpp\
     ingresos.cpp \
     global.cpp \
     basedatos.cpp \
-    compra.cpp
+    compra.cpp \
+    delegatecompras.cpp \
+    delegateingreso.cpp
 
 HEADERS  += principal.h \
     ingresos.h \
     global.h \
     basedatos.h \
-    compra.h
+    compra.h \
+    delegatecompras.h \
+    delegateingreso.h
 
 FORMS    += principal.ui
 

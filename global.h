@@ -15,6 +15,9 @@ public:
     static int porcentajeAFSP;//porcentaje Aporte fondo solidario pensiones
     static int porcentajeIVA; //porcentaje inpuesto IVA
     static int porcentajeConsumo; //porcentaje inpuesto al consumo
+    static QStringList metodosPago;
+
+   static void setMetodoPago(QStringList x);
 
 
 

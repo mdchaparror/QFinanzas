@@ -4,8 +4,11 @@
 #include <QMainWindow>
 #include <QDebug>
 #include "ingresos.h"
+#include "compra.h"
 #include "global.h"
 #include "basedatos.h"
+#include "delegatecompras.h"
+#include "delegateingreso.h"
 namespace Ui {
 class principal;
 }
@@ -30,6 +33,7 @@ private slots:
     void on_removeIngreso_clicked();
 
     void on_saveIngresos_clicked();
+    void updateModels();
 
 private:
     Ui::principal *ui;
@@ -37,6 +41,9 @@ private:
     QSqlTableModel*  ComprasModel;
     QSqlTableModel*  IngresosModel;
     QSqlTableModel*  MetodosPagoModel;
+    DelegateCompras *delegateC;
+    delegateIngreso *delegateI;
+
 
 };
 
