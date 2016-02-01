@@ -30,3 +30,6 @@ FORMS    += principal.ui
 OTHER_FILES += \
     .gitignore \
     sql.txt
+
+RESOURCES += \
+    imagenes.qrc

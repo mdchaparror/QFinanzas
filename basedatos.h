@@ -5,7 +5,6 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlQueryModel>
-
 #include <QStandardItemModel>
 #include <QSqlTableModel>
 
@@ -27,6 +26,8 @@ public slots:
     void close();
     bool insert(QStringList registro, int tabla);
     bool createTable(int tabla);
+    QSqlTableModel* TablasModel(QString tmp);
+    QStringList getColumn(QString table, QString columna);
 private:
 
     QSqlDatabase database;

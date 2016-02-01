@@ -4,7 +4,7 @@
 #define pruebas true
 
 QString global::dir_bd="sqliteBD/";
-QString global::usuario="Administrador";
+QString global::usuario="mdchaparror";
 int porcentajeAPF=4;
 int porcentajeEPS=4;
 int porcentajeAFSP=1;

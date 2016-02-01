@@ -100,4 +100,31 @@ bool BaseDatos::createTable(int tabla)
     return sql.exec(query);
 }
 
+QSqlTableModel* BaseDatos::TablasModel(QString tmp)
+{
+     QSqlTableModel *X;
+     X=new 	QSqlTableModel (0,database);
+     X->setTable(tmp);
 
+     X->setSort(1,Qt::AscendingOrder);
+     X->select();
+
+        return X;
+}
+
+QStringList BaseDatos::getColumn(QString table, QString columna)
+{
+    QSqlQuery sql(database);
+    QStringList temp;
+    QString consulta =QString("SELECT %2 FROM %1").arg(table).arg(columna);
+    if(sql.exec(consulta)){
+        while(sql.next()){
+            temp.append(sql.value(0).toString());
+        }
+
+    }
+    else{
+        qDebug()<<"No se pudo ejecutar la consulta";
+    }
+    return temp;
+}
