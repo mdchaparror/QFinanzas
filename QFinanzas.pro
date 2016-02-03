@@ -1,7 +1,7 @@
 #-------------------------------------------------
 #
 # Project created by QtCreator 2016-01-27T10:01:48
-#
+# CREADO POR MARTIN CHAPARRO
 #-------------------------------------------------
 
 QT       += core gui sql
