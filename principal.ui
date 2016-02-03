@@ -15,13 +15,13 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="tabPosition">
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="inicioTab">
        <attribute name="title">
@@ -277,6 +277,331 @@
        <attribute name="title">
         <string>PRESUPUESTO</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QComboBox" name="mes">
+              <item>
+               <property name="text">
+                <string>ENERO</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>FEBRERO</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>MARZO</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>ABRIL</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>MAYO</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>JUNIO</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>JULIO</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>AGOSTO</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>SEPTIEMBRE</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>NOVIEMBRE</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>DICIEMBRE</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="year">
+              <property name="minimum">
+               <number>2013</number>
+              </property>
+              <property name="maximum">
+               <number>2050</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="addRegPresupuesto">
+              <property name="minimumSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="imagenes.qrc">
+                <normaloff>:/imagenes/Imagenes/add.png</normaloff>:/imagenes/Imagenes/add.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="removeRegPresupuesto">
+              <property name="minimumSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="imagenes.qrc">
+                <normaloff>:/imagenes/Imagenes/quit.png</normaloff>:/imagenes/Imagenes/quit.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableView" name="tablePresupuesto">
+            <property name="sortingEnabled">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="labelTotal">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>80</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>120</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="sizeIncrement">
+               <size>
+                <width>120</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>TOTAL</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="totalDebito">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>120</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="maximum">
+               <double>10000000.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="totalCredito">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>120</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="maximum">
+               <double>10000000.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>120</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="sizeIncrement">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>TOTAL</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="Totales">
+              <property name="minimumSize">
+               <size>
+                <width>240</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>240</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="minimum">
+               <double>-10000000.000000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>10000000.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="1">
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>396</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -291,6 +616,13 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuMENU">
+    <property name="title">
+     <string>MENU</string>
+    </property>
+    <addaction name="actionAdd_Metodo_de_Pago"/>
+   </widget>
+   <addaction name="menuMENU"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -301,6 +633,11 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionAdd_Metodo_de_Pago">
+   <property name="text">
+    <string>Add Metodo de Pago</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

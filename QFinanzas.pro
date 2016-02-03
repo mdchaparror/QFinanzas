@@ -19,7 +19,9 @@ SOURCES += main.cpp\
     basedatos.cpp \
     compra.cpp \
     delegatecompras.cpp \
-    delegateingreso.cpp
+    delegateingreso.cpp \
+    metodopago.cpp \
+    presupuesto.cpp
 
 HEADERS  += principal.h \
     ingresos.h \
@@ -27,9 +29,12 @@ HEADERS  += principal.h \
     basedatos.h \
     compra.h \
     delegatecompras.h \
-    delegateingreso.h
+    delegateingreso.h \
+    metodopago.h \
+    presupuesto.h
 
-FORMS    += principal.ui
+FORMS    += principal.ui \
+    metodopago.ui
 
 OTHER_FILES += \
     .gitignore \

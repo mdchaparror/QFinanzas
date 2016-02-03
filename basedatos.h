@@ -16,6 +16,7 @@ public:
     static const int TABLA_COMPRAS;
     static const int TABLA_INGRESOS;
     static const int TABLA_METODOSPAGOS;
+    static const int TABLA_PRESUPUESTO;
 
 signals:
     void table_changed(QString table);
@@ -28,6 +29,7 @@ public slots:
     bool createTable(int tabla);
     QSqlTableModel* TablasModel(QString tmp);
     QStringList getColumn(QString table, QString columna);
+    double getSumCoulmna(int tabla,QString col,QString filter);
 private:
 
     QSqlDatabase database;

@@ -9,6 +9,8 @@
 #include "basedatos.h"
 #include "delegatecompras.h"
 #include "delegateingreso.h"
+#include "metodopago.h"
+#include "presupuesto.h"
 namespace Ui {
 class principal;
 }
@@ -33,7 +35,20 @@ private slots:
     void on_removeIngreso_clicked();
 
     void on_saveIngresos_clicked();
-    void updateModels();
+
+
+    void on_actionAdd_Metodo_de_Pago_triggered();
+    void updateMetodoPago();
+
+
+
+    void on_addRegPresupuesto_clicked();
+
+    void on_removeRegPresupuesto_clicked();
+
+    void on_mes_currentTextChanged(const QString &arg1);
+
+    void on_totalDebito_valueChanged(double arg1);
 
 private:
     Ui::principal *ui;
@@ -41,8 +56,10 @@ private:
     QSqlTableModel*  ComprasModel;
     QSqlTableModel*  IngresosModel;
     QSqlTableModel*  MetodosPagoModel;
+    QSqlTableModel*  PresupuestoModel;
     DelegateCompras *delegateC;
     delegateIngreso *delegateI;
+    MetodoPago *metodoPago;
 
 
 };

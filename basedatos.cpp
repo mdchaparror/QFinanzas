@@ -4,7 +4,8 @@
 #include <QSqlTableModel>
 const int BaseDatos::TABLA_COMPRAS=0;
 const int BaseDatos::TABLA_INGRESOS=1;
-const int BaseDatos::TABLA_METODOSPAGOS=3;
+const int BaseDatos::TABLA_METODOSPAGOS=2;
+const int BaseDatos::TABLA_PRESUPUESTO=3;
 
 
 BaseDatos::BaseDatos(QObject *parent): QObject(parent)
@@ -49,7 +50,8 @@ bool BaseDatos::insert(QStringList registro,int tabla)
     case TABLA_INGRESOS:
         query="INSERT INTO INGRESOS(FECHA,DESCRIPCION,VALOR_DEVENGADO, BONIFICACION,APORTE_APF,APORTE_EPS,APORTE_AFSP,VALOR_NETO) VALUES( ?, ?, ?, ?,?,?,?,?)";
         break;
-    case TABLA_METODOSPAGOS:
+    case TABLA_PRESUPUESTO:
+        query="INSERT INTO PRESUPUESTO(MES,DETALLE,DEBITO,CREDITO) VALUES(?,?,?,?)";
         break;
     }
     QSqlQuery sql(database);
@@ -96,6 +98,11 @@ bool BaseDatos::createTable(int tabla)
         query="CREATE  TABLE IF NOT EXISTS METODOS_PAGO(METODO  TEXT PRIMARY KEY NOT NULL)";   // Crea la tabla
 
         break;
+
+    case TABLA_PRESUPUESTO:
+        query="CREATE  TABLE IF NOT EXISTS PRESUPUESTO(ID  integer PRIMARY KEY NOT NULL,MES TEXT,DETALLE  TEXT,DEBITO DOUBLE DEFAULT 0.0,CREDITO DOUBLE DEFAULT 0.0)";   // Crea la tabla
+
+        break;
     }
     return sql.exec(query);
 }
@@ -127,4 +134,31 @@ QStringList BaseDatos::getColumn(QString table, QString columna)
         qDebug()<<"No se pudo ejecutar la consulta";
     }
     return temp;
+}
+
+double BaseDatos::getSumCoulmna(int tabla, QString col, QString filter)
+{
+
+    QString query;
+    switch(tabla){
+    case TABLA_COMPRAS:
+         query=QString("SELECT SUM(%1) FROM COMPRAS WHERE %3;").arg(col).arg(filter);
+        break;
+    case TABLA_INGRESOS:
+        query=QString("SELECT SUM(%1) FROM INGRESO WHERE %3;").arg(col).arg(filter);
+        break;
+    case TABLA_PRESUPUESTO:
+        query=QString("SELECT SUM(%1) FROM PRESUPUESTO WHERE %3;").arg(col).arg(filter);
+        break;
+
+
+    }
+     QSqlQuery sql(query,database);
+    // qDebug()<<query;
+     while(sql.next()){
+         return sql.value(0).toDouble();
+     }
+    return 0.0;
+
+
 }
