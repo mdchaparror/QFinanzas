@@ -27,6 +27,7 @@ QWidget * DelegateCompras::createEditor(QWidget *parent, const QStyleOptionViewI
         QDoubleSpinBox *editorDouble=new QDoubleSpinBox(parent);
         editorDouble->setMinimum(0.0);
         editorDouble->setMaximum(10000000.0);
+        editorDouble->setPrefix("$ ");
         return editorDouble;
     }
     case 7:{
@@ -70,6 +71,7 @@ void DelegateCompras::setEditorData(QWidget *editor, const QModelIndex &index) c
     case 3:{
         double Value=index.model()->data(index,Qt::EditRole).toDouble();
         QDoubleSpinBox *editorDouble=static_cast<QDoubleSpinBox *>(editor);
+        editorDouble->setPrefix("$ ");
         editorDouble->setValue(Value);
         break;
     }

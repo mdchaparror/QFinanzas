@@ -15,6 +15,7 @@ principal::principal(QWidget *parent) :
 
     delegateC = new DelegateCompras(this);
     delegateI = new delegateIngreso(this);
+    delegateP = new delegatePresupuesto(this);
 
     finanzasBD.open(global::dir_bd+global::usuario+".db");
     finanzasBD.createTable(BaseDatos::TABLA_COMPRAS);
@@ -31,6 +32,8 @@ principal::principal(QWidget *parent) :
 
     ui->tableCompras->setItemDelegate(delegateC);
     ui->tableIngresos->setItemDelegate(delegateI);
+    ui->tablePresupuesto->setItemDelegate(delegateP);
+
     ui->tableCompras->setModel(ComprasModel);
     ui->tableCompras->hideColumn(0);
     ui->tableCompras->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
@@ -50,10 +53,16 @@ principal::principal(QWidget *parent) :
 
     ui->tableIngresos->resizeColumnsToContents();
     ui->tableCompras->resizeColumnsToContents();
+    ui->tableIngresos->setContextMenuPolicy(Qt::CustomContextMenu);
+    ui->tableCompras->setContextMenuPolicy(Qt::CustomContextMenu);
+    ui->tablePresupuesto->setContextMenuPolicy(Qt::CustomContextMenu);
 
     connect(MetodosPagoModel,SIGNAL(dataChanged(QModelIndex,QModelIndex)),this,SLOT(updateMetodoPago()));
+    connect(PresupuestoModel,SIGNAL(dataChanged(QModelIndex,QModelIndex)),this,SLOT(dataPresupuestoChange()));
 
-
+    connect(ui->tableIngresos, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequestIngreso(QPoint)));
+    connect(ui->tableCompras, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequestCompras(QPoint)));
+    connect(ui->tablePresupuesto, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequestPresupuesto(QPoint)));
 
 
 }
@@ -154,20 +163,99 @@ void principal::on_mes_currentTextChanged(const QString &arg1)
     QString filter=QString("MES='%1_%2'").arg(arg1).arg(ui->year->value());
     PresupuestoModel->setFilter(filter);
     ui->tablePresupuesto->model()->sort(1);
-    double totalDebito=finanzasBD.getSumCoulmna(BaseDatos::TABLA_PRESUPUESTO,"DEBITO",filter);
-    double totalCredito=finanzasBD.getSumCoulmna(BaseDatos::TABLA_PRESUPUESTO,"CREDITO",filter);
-    ui->totalCredito->setValue(totalCredito);
-    ui->totalDebito->setValue(totalDebito);
+    dataPresupuestoChange();
+
 
 }
 
-void principal::on_totalDebito_valueChanged(double arg1)
+void principal::dataPresupuestoChange()
 {
-    ui->Totales->setValue(arg1-ui->totalCredito->value());
+
+    QString mes=ui->mes->currentText();
+    QString filter=QString("MES='%1_%2'").arg(mes).arg(ui->year->value());
+    double totalIngresos=finanzasBD.getSumCoulmna(BaseDatos::TABLA_PRESUPUESTO,"INGRESOS",filter);
+    double totalGastos=finanzasBD.getSumCoulmna(BaseDatos::TABLA_PRESUPUESTO,"GASTOS",filter);
+    ui->totalGastos->setValue(totalGastos);
+    ui->totalIngresos->setValue(totalIngresos);
+
+    ui->Totales->setValue(totalIngresos-totalGastos);
     if(ui->Totales->value()<0){
-       ui->Totales->setStyleSheet("background-color: rgb(255, 0, 0)");
+        ui->Totales->setStyleSheet("background-color: rgb(255, 0, 0)");
     }
     else{
         ui->Totales->setStyleSheet("background-color: rgb(255, 255, 255)");
+    }
+}
+
+void principal::contextMenuRequestIngreso(QPoint pos)
+{
+    QMenu *menu = new QMenu(this);
+    menu->setAttribute(Qt::WA_DeleteOnClose);
+
+    menu->addAction(QIcon(":/imagenes/Imagenes/add.png"),"Añadir Ingreso", this, SLOT(on_addIngreso_clicked()));
+    if(ui->tableIngresos->currentIndex().isValid())
+        menu->addAction(QIcon(":/imagenes/Imagenes/quit.png"),"Remover Ingreso", this, SLOT(on_removeIngreso_clicked()));
+
+
+    menu->popup(ui->tableIngresos->mapToGlobal(pos));
+}
+
+void principal::contextMenuRequestCompras(QPoint pos)
+{
+    QMenu *menu = new QMenu(this);
+    menu->setAttribute(Qt::WA_DeleteOnClose);
+    menu->addAction(QIcon(":/imagenes/Imagenes/add.png"),"Añadir Compra", this, SLOT(on_addCompra_clicked()));
+    if(ui->tableCompras->currentIndex().isValid())
+        menu->addAction(QIcon(":/imagenes/Imagenes/quit.png"),"Remover Compra", this, SLOT(on_removeCompra_clicked()));
+    menu->popup(ui->tableCompras->mapToGlobal(pos));
+}
+void principal::contextMenuRequestPresupuesto(QPoint pos)
+{
+    QMenu *menu = new QMenu(this);
+    menu->setAttribute(Qt::WA_DeleteOnClose);
+    menu->addAction(QIcon(":/imagenes/Imagenes/add.png"),"Añadir registro", this, SLOT(on_addRegPresupuesto_clicked()));
+    if(ui->tablePresupuesto->currentIndex().isValid())
+        menu->addAction(QIcon(":/imagenes/Imagenes/quit.png"),"Remover registro", this, SLOT(on_removeRegPresupuesto_clicked()));
+    menu->popup(ui->tablePresupuesto->mapToGlobal(pos));
+}
+
+void principal::resizeEvent(QResizeEvent *re){
+
+
+
+    on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
+}
+
+
+
+
+
+void principal::on_tabWidget_currentChanged(int index)
+{
+    switch (index) {
+    case 1:
+        for(int i=1;i<ui->tableCompras->model()->columnCount();i++){
+            ui->tableCompras->setColumnWidth(i,ui->tableCompras->rect().width()/(ui->tableCompras->model()->columnCount()-1)-2);
+
+        }
+        break;
+    case 2:
+        for(int i=1;i<ui->tableIngresos->model()->columnCount();i++){
+            ui->tableIngresos->setColumnWidth(i,ui->tableIngresos->rect().width()/(ui->tableIngresos->model()->columnCount()-1)-2);
+        }
+        break;
+
+    case 3:
+        int size =ui->tablePresupuesto->rect().width()-18;
+        for(int i = 2;i<5;i++){
+            ui->tablePresupuesto->setColumnWidth(i,size/(ui->tablePresupuesto->model()->columnCount()-2));
+            ui->totalGastos->resize(size/3,25);
+            ui->totalIngresos->resize(size/3,25);
+            ui->Totales->resize(size*2/3,25);
+            ui->labelSubTotal->resize(size/3,25);
+            ui->labelTotal->resize(size/3,25);
+        }
+        break;
+
     }
 }
