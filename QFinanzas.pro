@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     delegatecompras.cpp \
     delegateingreso.cpp \
     metodopago.cpp \
-    presupuesto.cpp
+    presupuesto.cpp \
+    delegatepresupuesto.cpp
 
 HEADERS  += principal.h \
     ingresos.h \
@@ -31,7 +32,8 @@ HEADERS  += principal.h \
     delegatecompras.h \
     delegateingreso.h \
     metodopago.h \
-    presupuesto.h
+    presupuesto.h \
+    delegatepresupuesto.h
 
 FORMS    += principal.ui \
     metodopago.ui

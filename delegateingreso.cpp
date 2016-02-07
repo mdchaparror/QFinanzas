@@ -28,6 +28,7 @@ QWidget * delegateIngreso::createEditor(QWidget *parent, const QStyleOptionViewI
         QDoubleSpinBox *editorDouble=new QDoubleSpinBox(parent);
         editorDouble->setMinimum(0.0);
         editorDouble->setMaximum(10000000.0);
+        editorDouble->setPrefix("$ ");
         return editorDouble;
     }
 
@@ -61,6 +62,7 @@ void delegateIngreso::setEditorData(QWidget *editor, const QModelIndex &index) c
     case 4:{
         double Value=index.model()->data(index,Qt::EditRole).toDouble();
         QDoubleSpinBox *editorDouble=static_cast<QDoubleSpinBox *>(editor);
+        editorDouble->setPrefix("$ ");
         editorDouble->setValue(Value);
         break;
     }
@@ -142,6 +144,7 @@ void delegateIngreso::setModelData(QWidget *editor, QAbstractItemModel *model, c
     case 8:{
 
         QDoubleSpinBox *Valor=static_cast<QDoubleSpinBox *>(editor);
+        Valor->setPrefix("$ ");
         Valor->interpretText();
         double value=Valor->value();
         model->setData(index,value,Qt::EditRole);

@@ -9,6 +9,7 @@
 #include "basedatos.h"
 #include "delegatecompras.h"
 #include "delegateingreso.h"
+#include "delegatepresupuesto.h"
 #include "metodopago.h"
 #include "presupuesto.h"
 namespace Ui {
@@ -48,7 +49,12 @@ private slots:
 
     void on_mes_currentTextChanged(const QString &arg1);
 
-    void on_totalDebito_valueChanged(double arg1);
+    void dataPresupuestoChange();
+    void contextMenuRequestIngreso(QPoint pos);
+    void contextMenuRequestCompras(QPoint pos);
+    void contextMenuRequestPresupuesto(QPoint pos);
+    void resizeEvent ( QResizeEvent *re );
+   void on_tabWidget_currentChanged(int index);
 
 private:
     Ui::principal *ui;
@@ -59,6 +65,7 @@ private:
     QSqlTableModel*  PresupuestoModel;
     DelegateCompras *delegateC;
     delegateIngreso *delegateI;
+    delegatePresupuesto *delegateP;
     MetodoPago *metodoPago;
 
 

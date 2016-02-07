@@ -51,7 +51,7 @@ bool BaseDatos::insert(QStringList registro,int tabla)
         query="INSERT INTO INGRESOS(FECHA,DESCRIPCION,VALOR_DEVENGADO, BONIFICACION,APORTE_APF,APORTE_EPS,APORTE_AFSP,VALOR_NETO) VALUES( ?, ?, ?, ?,?,?,?,?)";
         break;
     case TABLA_PRESUPUESTO:
-        query="INSERT INTO PRESUPUESTO(MES,DETALLE,DEBITO,CREDITO) VALUES(?,?,?,?)";
+        query="INSERT INTO PRESUPUESTO(MES,DETALLE,GASTOS,INGRESOS) VALUES(?,?,?,?)";
         break;
     }
     QSqlQuery sql(database);
@@ -100,7 +100,7 @@ bool BaseDatos::createTable(int tabla)
         break;
 
     case TABLA_PRESUPUESTO:
-        query="CREATE  TABLE IF NOT EXISTS PRESUPUESTO(ID  integer PRIMARY KEY NOT NULL,MES TEXT,DETALLE  TEXT,DEBITO DOUBLE DEFAULT 0.0,CREDITO DOUBLE DEFAULT 0.0)";   // Crea la tabla
+        query="CREATE  TABLE IF NOT EXISTS PRESUPUESTO(ID  integer PRIMARY KEY NOT NULL,MES TEXT,DETALLE  TEXT,GASTOS DOUBLE DEFAULT 0.0,INGRESOS DOUBLE DEFAULT 0.0)";   // Crea la tabla
 
         break;
     }
