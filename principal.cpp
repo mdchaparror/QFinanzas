@@ -64,7 +64,7 @@ principal::principal(QWidget *parent) :
     connect(ui->tableCompras, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequestCompras(QPoint)));
     connect(ui->tablePresupuesto, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequestPresupuesto(QPoint)));
 
-
+    ui->AmortizacionTable->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
 }
 
 principal::~principal()
@@ -86,9 +86,17 @@ void principal::on_addCompra_clicked()
 
 void principal::on_removeCompra_clicked()
 {
-    QModelIndex index=ui->tableCompras->currentIndex();
-    ui->tableCompras->model()->removeRow(index.row());
-    ui->tableCompras->model()->sort(1);
+
+    if(QMessageBox::question(this,"Borrar registro","¿Desea borrar el registro?",QMessageBox::Yes| QMessageBox::No)==QMessageBox::Yes){
+        QModelIndex index=ui->tableCompras->currentIndex();
+        ui->tableCompras->model()->removeRow(index.row());
+        ui->tableCompras->model()->sort(1);
+    }
+    else{
+        return;
+    }
+
+
 
 }
 
@@ -108,9 +116,16 @@ void principal::on_addIngreso_clicked()
 
 void principal::on_removeIngreso_clicked()
 {
-    QModelIndex index=ui->tableIngresos->currentIndex();
-    ui->tableIngresos->model()->removeRow(index.row());
-    ui->tableIngresos->model()->sort(1);
+    if(QMessageBox::question(this,"Borrar registro","¿Desea borrar el registro?",QMessageBox::Yes| QMessageBox::No)==QMessageBox::Yes){
+        QModelIndex index=ui->tableIngresos->currentIndex();
+        ui->tableIngresos->model()->removeRow(index.row());
+        ui->tableIngresos->model()->sort(1);
+
+    }
+    else{
+        return;
+    }
+
 
 
 
@@ -151,10 +166,20 @@ void principal::on_addRegPresupuesto_clicked()
 void principal::on_removeRegPresupuesto_clicked()
 {
 
-    QModelIndex index=ui->tablePresupuesto->currentIndex();
-    ui->tablePresupuesto->model()->removeRow(index.row());
-    ui->tablePresupuesto->model()->sort(1);
-    on_mes_currentTextChanged(ui->mes->currentText());
+
+    if(QMessageBox::question(this,"Borrar registro","¿Desea borrar el registro?",QMessageBox::Yes| QMessageBox::No)==QMessageBox::Yes){
+        QModelIndex index=ui->tablePresupuesto->currentIndex();
+        ui->tablePresupuesto->model()->removeRow(index.row());
+        ui->tablePresupuesto->model()->sort(1);
+        on_mes_currentTextChanged(ui->mes->currentText());
+
+    }
+    else{
+        return;
+    }
+
+
+
 
 }
 
@@ -258,4 +283,41 @@ void principal::on_tabWidget_currentChanged(int index)
         break;
 
     }
+}
+
+void principal::on_Calcular_Amortizacion_clicked()
+{
+    double saldo= ui->Valor->value();
+    double interesMensual = ui->interesAnual->value()/12.0/100;
+    int nCuotas= ui->nCuotas->value();
+    double cuotaMensual = (double)saldo/nCuotas;
+    AmortizacionModel = new QStandardItemModel(nCuotas+1,5,this);
+     QModelIndex index;
+     index = AmortizacionModel->index(0,0,QModelIndex());
+     AmortizacionModel->setData(index,0);
+     index = AmortizacionModel->index(0,1,QModelIndex());
+     AmortizacionModel->setData(index,saldo);
+
+    for(int i= 1;i<nCuotas+1;i++){
+        index = AmortizacionModel->index(i,0,QModelIndex());
+        AmortizacionModel->setData(index,i);
+        double interes=saldo*interesMensual;
+        saldo -= cuotaMensual;
+        double pago = interes+cuotaMensual;
+        index = AmortizacionModel->index(i,1,QModelIndex());
+        AmortizacionModel->setData(index,qRound(saldo));
+        index = AmortizacionModel->index(i,2,QModelIndex());
+        AmortizacionModel->setData(index,cuotaMensual);
+        index = AmortizacionModel->index(i,3,QModelIndex());
+        AmortizacionModel->setData(index,interes);
+        index = AmortizacionModel->index(i,4,QModelIndex());
+        AmortizacionModel->setData(index,pago);
+
+
+
+    }
+    QStringList headers;
+    headers<<"Mes"<<"Saldo"<<"Amortización"<<"Interés"<<"Cuota";
+    AmortizacionModel->setHorizontalHeaderLabels(headers);
+    ui->AmortizacionTable->setModel(AmortizacionModel);
 }

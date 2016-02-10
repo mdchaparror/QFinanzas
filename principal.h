@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include <QMessageBox>
 #include "ingresos.h"
 #include "compra.h"
 #include "global.h"
@@ -56,6 +57,8 @@ private slots:
     void resizeEvent ( QResizeEvent *re );
    void on_tabWidget_currentChanged(int index);
 
+   void on_Calcular_Amortizacion_clicked();
+
 private:
     Ui::principal *ui;
     BaseDatos finanzasBD;
@@ -67,6 +70,7 @@ private:
     delegateIngreso *delegateI;
     delegatePresupuesto *delegateP;
     MetodoPago *metodoPago;
+    QStandardItemModel *AmortizacionModel;
 
 
 };
