@@ -21,6 +21,21 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="tabPosition">
@@ -461,8 +476,14 @@
               <height>0</height>
              </size>
             </property>
+            <property name="lineWidth">
+             <number>2</number>
+            </property>
             <property name="sizeAdjustPolicy">
              <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+            </property>
+            <property name="autoScrollMargin">
+             <number>0</number>
             </property>
             <property name="alternatingRowColors">
              <bool>true</bool>
@@ -534,9 +555,19 @@
               <property name="font">
                <font>
                 <pointsize>10</pointsize>
+                <kerning>true</kerning>
                </font>
               </property>
+              <property name="frame">
+               <bool>false</bool>
+              </property>
               <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="keyboardTracking">
                <bool>true</bool>
               </property>
               <property name="prefix">
@@ -572,8 +603,14 @@
                 <pointsize>10</pointsize>
                </font>
               </property>
+              <property name="frame">
+               <bool>false</bool>
+              </property>
               <property name="readOnly">
                <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
               </property>
               <property name="prefix">
                <string>$ </string>
@@ -646,8 +683,14 @@
                 <pointsize>10</pointsize>
                </font>
               </property>
+              <property name="frame">
+               <bool>false</bool>
+              </property>
               <property name="readOnly">
                <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
               </property>
               <property name="prefix">
                <string>$ </string>
@@ -832,7 +875,7 @@
      <x>0</x>
      <y>0</y>
      <width>970</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMENU">

@@ -274,11 +274,11 @@ void principal::on_tabWidget_currentChanged(int index)
         int size =ui->tablePresupuesto->rect().width()-18;
         for(int i = 2;i<5;i++){
             ui->tablePresupuesto->setColumnWidth(i,size/(ui->tablePresupuesto->model()->columnCount()-2));
-            ui->totalGastos->resize(size/3,25);
-            ui->totalIngresos->resize(size/3,25);
-            ui->Totales->resize(size*2/3,25);
-            ui->labelSubTotal->resize(size/3,25);
-            ui->labelTotal->resize(size/3,25);
+            ui->totalGastos->setMinimumWidth(size/3);
+            ui->totalIngresos->setMinimumWidth(size/3);
+            ui->Totales->setMinimumWidth(size*2/3);
+            ui->labelSubTotal->setMaximumWidth(size/3);
+            ui->labelTotal->setMaximumWidth(size/3);
         }
         break;
 
