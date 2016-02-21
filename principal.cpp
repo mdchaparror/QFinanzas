@@ -1,5 +1,6 @@
 #include "principal.h"
 #include "ui_principal.h"
+#include <QResizeEvent>
 
 principal::principal(QWidget *parent) :
     QMainWindow(parent),
@@ -249,6 +250,7 @@ void principal::resizeEvent(QResizeEvent *re){
 
 
     on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
+    QWidget::resizeEvent(re);
 }
 
 
@@ -292,11 +294,11 @@ void principal::on_Calcular_Amortizacion_clicked()
     int nCuotas= ui->nCuotas->value();
     double cuotaMensual = (double)saldo/nCuotas;
     AmortizacionModel = new QStandardItemModel(nCuotas+1,5,this);
-     QModelIndex index;
-     index = AmortizacionModel->index(0,0,QModelIndex());
-     AmortizacionModel->setData(index,0);
-     index = AmortizacionModel->index(0,1,QModelIndex());
-     AmortizacionModel->setData(index,saldo);
+    QModelIndex index;
+    index = AmortizacionModel->index(0,0,QModelIndex());
+    AmortizacionModel->setData(index,0);
+    index = AmortizacionModel->index(0,1,QModelIndex());
+    AmortizacionModel->setData(index,saldo);
 
     for(int i= 1;i<nCuotas+1;i++){
         index = AmortizacionModel->index(i,0,QModelIndex());
