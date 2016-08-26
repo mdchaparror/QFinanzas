@@ -4,8 +4,10 @@
 # CREADO POR MARTIN CHAPARRO
 #-------------------------------------------------
 
-QT       += core gui sql
-QT += axcontainer
+QT       += core gui sql printsupport
+#QT += axcontainer
+include(xlsx/qtxlsx.pri)
+XLSX_NO_LIB
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,7 +29,9 @@ SOURCES += main.cpp\
     amortizacion_widget.cpp \
     compras_widget.cpp \
     ingresos_widget.cpp \
-    presupuesto_widget.cpp
+    presupuesto_widget.cpp \
+    reportexcel.cpp
+
 
 HEADERS  += principal.h \
     ingresos.h \
@@ -42,7 +46,9 @@ HEADERS  += principal.h \
     amortizacion_widget.h \
     compras_widget.h \
     ingresos_widget.h \
-    presupuesto_widget.h
+    presupuesto_widget.h \
+    reportexcel.h
+
 
 FORMS    += principal.ui \
     metodopago.ui \

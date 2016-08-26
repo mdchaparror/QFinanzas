@@ -6,6 +6,7 @@
 #include "basedatos.h"
 #include "delegatepresupuesto.h"
 #include "presupuesto.h"
+#include "reportexcel.h"
 
 namespace Ui {
 class Presupuesto_Widget;
@@ -17,9 +18,18 @@ class Presupuesto_Widget : public QWidget
 
 public:
     explicit Presupuesto_Widget(QWidget *parent = 0);
+    enum COLUMNS{
+        colId,
+        colMes,
+        colDetalle,
+        colDebito,
+        colCredito
+    };
+
     ~Presupuesto_Widget();
 public slots:
     void setBaseDatos(BaseDatos *bd);
+    void setReportes(ReportExcel *r);
 
 private slots:
     void on_addRegPresupuesto_clicked();
@@ -32,11 +42,14 @@ private slots:
 
     void on_mes_currentTextChanged(const QString &arg1);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Presupuesto_Widget *ui;
      BaseDatos *finanzasBD;
      QSqlTableModel*  PresupuestoModel;
      delegatePresupuesto *delegateP;
+     ReportExcel *reportes;
 
 };
 

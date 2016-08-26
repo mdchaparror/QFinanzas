@@ -7,6 +7,7 @@
 #include "global.h"
 #include "basedatos.h"
 #include "metodopago.h"
+#include "reportexcel.h"
 
 namespace Ui {
 class principal;
@@ -44,6 +45,7 @@ private:
     BaseDatos *finanzasBD;
     QSqlTableModel*  MetodosPagoModel;
     MetodoPago *metodoPago;
+    ReportExcel *report;
 
 
 };

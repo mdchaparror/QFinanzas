@@ -15,7 +15,7 @@ Compras_Widget::Compras_Widget(QWidget *parent) :
 
     ui->tableCompras->setItemDelegate(delegateC);
     ui->tableCompras->setModel(ComprasModel);
-    ui->tableCompras->hideColumn(0);
+
     ui->tableCompras->resizeColumnsToContents();
     ui->tableCompras->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->tableCompras, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequestCompras(QPoint)));
@@ -58,6 +58,8 @@ void Compras_Widget::setBaseDatos(BaseDatos *bd)
     ComprasModel=finanzasBD->TablasModel("COMPRAS");
     finanzasBD->createTable(BaseDatos::TABLA_COMPRAS);
     ui->tableCompras->setModel(ComprasModel);
+      ui->tableCompras->hideColumn(0);
+      ui->tableCompras->model()->sort(1);
 }
 void Compras_Widget::contextMenuRequestCompras(QPoint pos)
 {

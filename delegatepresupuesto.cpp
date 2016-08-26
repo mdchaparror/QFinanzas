@@ -11,6 +11,7 @@ QWidget *delegatePresupuesto::createEditor(QWidget *parent, const QStyleOptionVi
     case 2:{
         QTextEdit *editorTexto=new QTextEdit(parent);
         return editorTexto;}
+
     case 3:
     case 4:
         QDoubleSpinBox *editorDouble=new QDoubleSpinBox(parent);

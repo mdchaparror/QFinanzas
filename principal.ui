@@ -10,6 +10,12 @@
     <height>1012</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="minimumSize">
    <size>
     <width>970</width>
@@ -23,14 +29,35 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QSplitter" name="splitter_3">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
       <widget class="QSplitter" name="splitter">
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
+       <property name="childrenCollapsible">
+        <bool>false</bool>
+       </property>
        <widget class="Compras_Widget" name="comprasWidget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>400</width>
@@ -39,6 +66,12 @@
         </property>
        </widget>
        <widget class="Amortizacion_Widget" name="amortizacionWidget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>400</width>
@@ -48,10 +81,28 @@
        </widget>
       </widget>
       <widget class="QSplitter" name="splitter_2">
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
+       <property name="childrenCollapsible">
+        <bool>false</bool>
+       </property>
        <widget class="Ingresos_Widget" name="ingresosWidget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>400</width>
@@ -60,6 +111,12 @@
         </property>
        </widget>
        <widget class="Presupuesto_Widget" name="presupuestoWidget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>400</width>

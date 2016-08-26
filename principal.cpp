@@ -11,6 +11,7 @@ principal::principal(QWidget *parent) :
 
 
     MetodosPagoModel= new QSqlTableModel(this);
+    report = new ReportExcel();
 
 
 
@@ -23,6 +24,7 @@ principal::principal(QWidget *parent) :
     ui->comprasWidget->setBaseDatos(finanzasBD);
     ui->ingresosWidget->setBaseDatos(finanzasBD);
     ui->presupuestoWidget->setBaseDatos(finanzasBD);
+    ui->presupuestoWidget->setReportes(report);
 
 
 
@@ -46,6 +48,7 @@ principal::~principal()
 {
     delete ui;
     finanzasBD->close();
+    delete report;
 }
 
 
@@ -77,7 +80,6 @@ void principal::updateMetodoPago(){
 
 void principal::resizeEvent(QResizeEvent *event)
 {
-    QSize size = event->size();
-    //ui->ComprasdockWidget->setSizeIncrement(size.width()/2,size.height()/2);
+
     qDebug()<<event->size();
 }

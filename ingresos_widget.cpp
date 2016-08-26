@@ -11,9 +11,8 @@ Ingresos_Widget::Ingresos_Widget(QWidget *parent) :
     delegateI = new delegateIngreso(this);
     ui->tableIngresos->setItemDelegate(delegateI);
 
-    ui->tableIngresos->hideColumn(0);
     ui->tableIngresos->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
-    ui->tableIngresos->resizeColumnsToContents();
+
     ui->tableIngresos->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->tableIngresos, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequestIngreso(QPoint)));
 
@@ -29,7 +28,10 @@ void Ingresos_Widget::setBaseDatos(BaseDatos *bd)
     finanzasBD = bd;
     finanzasBD->createTable(BaseDatos::TABLA_INGRESOS);
     IngresosModel=finanzasBD->TablasModel("INGRESOS");
-      ui->tableIngresos->setModel(IngresosModel);
+    ui->tableIngresos->setModel(IngresosModel);
+    ui->tableIngresos->resizeColumnsToContents();
+    ui->tableIngresos->hideColumn(0);
+    ui->tableIngresos->sortByColumn(1);
 
 }
 
