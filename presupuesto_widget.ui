@@ -76,6 +76,11 @@
          </item>
          <item>
           <property name="text">
+           <string>OCTUBRE</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
            <string>NOVIEMBRE</string>
           </property>
          </item>
