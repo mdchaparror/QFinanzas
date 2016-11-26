@@ -139,7 +139,7 @@ void Presupuesto_Widget::on_pushButton_clicked()
    Presupuesto tem=list.at(0);
    QString mes=tem.getMes();
    QString NameFileIN=QFileDialog::getSaveFileName(this,tr("Guardar Archivo Presupuesto"),
-                                                   QString("PRESUPUESTO"), tr("Presupuesto(*.xlsx)"));
+                                                   QString("PRESUPUESTO.xlsx"), tr("Presupuesto(*.xlsx)"));
    if(NameFileIN.isEmpty()){
        qDebug()<<"No se selecciono archivo";
        return;
