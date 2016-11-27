@@ -12,14 +12,12 @@ ReportExcel::ReportExcel()
     headerFormat.setFontSize(12);
     headerFormat.setFontColor(fontColor);
     headerFormat.setBorderStyle(QXlsx::Format::BorderMedium);
-
     headerFormat2.setPatternBackgroundColor(headerColor2);
     headerFormat2.setHorizontalAlignment(QXlsx::Format::AlignHCenter);
     headerFormat2.setFontBold(true);
     headerFormat2.setFontSize(12);
     headerFormat2.setFontColor(fontColor);
     headerFormat2.setBorderStyle(QXlsx::Format::BorderMedium);
-
     cellFormat.setFontColor(QColor(Qt::black));
     cellFormat.setFontSize(10);
     cellFormat.setHorizontalAlignment(QXlsx::Format::AlignLeft);
@@ -91,8 +89,8 @@ QString ReportExcel::ReportPresupuesto(QString _mes, QString NameFileIN, QList<P
     foreach (Presupuesto p, registros) {
         excelFile.write(row,colDetalle,p.getDetalle(),cellFormat);
         excelFile.write(row,colGasto,p.getDebito(),cellFormatMoneda);
-         excelFile.write(row,colIngreso,p.getCredito(),cellFormatMoneda);
-         row++;
+        excelFile.write(row,colIngreso,p.getCredito(),cellFormatMoneda);
+        row++;
     }
     QString merge=QString("A%1:B%1").arg(row);
     QString rango1=QString("B3:B%1").arg(row-1);
@@ -101,10 +99,6 @@ QString ReportExcel::ReportPresupuesto(QString _mes, QString NameFileIN, QList<P
     excelFile.mergeCells(merge,headerFormat);
     excelFile.write(row,colDetalle,"TOTAL NETO",headerFormat);
     excelFile.write(row,colIngreso,formula,cellFormatMoneda);
-
-//    QXlsx::Worksheet *sheet = excelIpkFile.currentWorksheet();
-//    sheet->writeString("L5","EFICIENCIA TOTAL",cellFormat);
-//    sheet->writeFormula("M5","M4/M3",cellFormat);
 
     excelFile.setDocumentProperty("creator","Martin Chaparro");
     excelFile.setDocumentProperty("company","MDCHAPARROR, MDCHAPARROR");

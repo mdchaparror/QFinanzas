@@ -71,3 +71,8 @@ void Ingresos_Widget::contextMenuRequestIngreso(QPoint pos)
 
     menu->popup(ui->tableIngresos->mapToGlobal(pos));
 }
+
+void Ingresos_Widget::on_saveIngresos_clicked()
+{
+
+}

@@ -26,6 +26,8 @@ private slots:
     void on_removeIngreso_clicked();
     void contextMenuRequestIngreso(QPoint pos);
 
+    void on_saveIngresos_clicked();
+
 private:
     Ui::Ingresos_Widget *ui;
      BaseDatos *finanzasBD;
