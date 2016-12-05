@@ -27,7 +27,7 @@ private:
     QColor headerColor2;
     QColor fontColor;
     QXlsx::Format headerFormat;
-     QXlsx::Format headerFormat2;
+    QXlsx::Format headerFormat2;
     QXlsx::Format cellFormat;
     QXlsx::Format cellFormatNumember;
     QXlsx::Format cellFormatMoneda;

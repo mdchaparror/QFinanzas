@@ -23,16 +23,6 @@ public:
 
 private slots:
 
-
-
-
-
-
-
-
-
-
-
     void on_actionAdd_Metodo_de_Pago_triggered();
     void updateMetodoPago();
 
