@@ -11,8 +11,9 @@ compra::compra()
     impConsumo=0.0;
     valorTotal=0.0;
     numeroCuotas=1;
+    categoria="";
 }
-compra::compra(int id,QString fecha, QString det,double sub, double iva,double consumo,double total,QString pago,int cuotas){
+compra::compra(int id,QString fecha, QString det,double sub, double iva,double consumo,double total,QString pago,int cuotas,QString categ){
   id=id;
   fecha=fecha;
   descripcion=det;
@@ -22,6 +23,7 @@ compra::compra(int id,QString fecha, QString det,double sub, double iva,double c
   valorTotal=total;
   metodoPago=pago;
   numeroCuotas=cuotas;
+  categoria=categ;
 }
 
 QStringList compra::toStringList()
@@ -36,7 +38,18 @@ QStringList compra::toStringList()
     reg.append(QString::number(valorTotal));
     reg.append(metodoPago);
     reg.append(QString::number(numeroCuotas));
+    reg.append(categoria);
 
     return reg;
+}
+
+QString compra::getCategoria() const
+{
+    return categoria;
+}
+
+void compra::setCategoria(const QString &value)
+{
+    categoria = value;
 }
 

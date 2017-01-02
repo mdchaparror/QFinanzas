@@ -6,7 +6,7 @@ const int BaseDatos::TABLA_COMPRAS=0;
 const int BaseDatos::TABLA_INGRESOS=1;
 const int BaseDatos::TABLA_METODOSPAGOS=2;
 const int BaseDatos::TABLA_PRESUPUESTO=3;
-
+const int BaseDatos::TABLA_CATEGORIA_COMPRA=4;
 
 BaseDatos::BaseDatos(QObject *parent): QObject(parent)
 {
@@ -45,7 +45,7 @@ bool BaseDatos::insert(QStringList registro,int tabla)
 
     switch(tabla){
     case TABLA_COMPRAS:
-        query="INSERT INTO COMPRAS(FECHA,DESCRIPCION,SUBTOTAL, IVA,IMP_CONSUMO,TOTAL,Metodo_De_Pago,N_Cuotas) VALUES( ?,?, ?, ?, ?,?,?,?)";
+        query="INSERT INTO COMPRAS(FECHA,DESCRIPCION,SUBTOTAL, IVA,IMP_CONSUMO,TOTAL,Metodo_De_Pago,N_Cuotas,CATEGORIA) VALUES( ?,?, ?, ?, ?,?,?,?,?)";
         break;
     case TABLA_INGRESOS:
         query="INSERT INTO INGRESOS(FECHA,DESCRIPCION,VALOR_DEVENGADO, BONIFICACION,APORTE_APF,APORTE_EPS,APORTE_AFSP,VALOR_NETO) VALUES( ?, ?, ?, ?,?,?,?,?)";
@@ -79,7 +79,8 @@ bool BaseDatos::createTable(int tabla)
                          IMP_CONSUMO DOUBLE,\
                          TOTAL DOUBLE,\
                          Metodo_De_Pago TEXT,\
-                         N_Cuotas integer DEFAULT 1)";   // Crea la tabla";
+                         N_Cuotas integer DEFAULT 1,\
+                         CATEGORIA TEXT DEFAULT '')";   // Crea la tabla";
         break;
     case TABLA_INGRESOS:
         query="CREATE  TABLE IF NOT EXISTS \
@@ -96,6 +97,11 @@ bool BaseDatos::createTable(int tabla)
                 break;
     case TABLA_METODOSPAGOS:
         query="CREATE  TABLE IF NOT EXISTS METODOS_PAGO(METODO  TEXT PRIMARY KEY NOT NULL)";   // Crea la tabla
+
+        break;
+
+    case TABLA_CATEGORIA_COMPRA:
+        query="CREATE  TABLE IF NOT EXISTS CATEGORIA_COMPRA(CATEGORIA  TEXT PRIMARY KEY NOT NULL)";   // Crea la tabla
 
         break;
 

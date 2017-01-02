@@ -6,7 +6,7 @@ class compra
 {
 public:
     compra();
-    compra(int id, QString fecha, QString det, double sub, double iva, double consumo, double total, QString pago, int cuotas);
+    compra(int id, QString fecha, QString det, double sub, double iva, double consumo, double total, QString pago, int cuotas, QString categ);
     int getId(){return id;}
     QString getFecha(){return fecha;}
     QString getDet(){return descripcion;}
@@ -27,6 +27,9 @@ public:
     void setTotal(QString tmp){metodoPago=tmp;}
     void setTotal(int tmp){numeroCuotas=tmp;}
     QStringList toStringList();
+    QString getCategoria() const;
+    void setCategoria(const QString &value);
+
 private:
     int id;
     QString fecha;
@@ -37,6 +40,7 @@ private:
     double impConsumo; //impuesto al consumo
     double valorTotal;
     int numeroCuotas;
+    QString categoria;
 
 
 };

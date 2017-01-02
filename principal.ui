@@ -48,8 +48,14 @@
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
+       <property name="opaqueResize">
+        <bool>true</bool>
+       </property>
+       <property name="handleWidth">
+        <number>4</number>
+       </property>
        <property name="childrenCollapsible">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <widget class="Compras_Widget" name="comprasWidget" native="true">
         <property name="sizePolicy">
@@ -94,7 +100,7 @@
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="childrenCollapsible">
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <widget class="Ingresos_Widget" name="ingresosWidget" native="true">
         <property name="sizePolicy">
@@ -135,7 +141,7 @@
      <x>0</x>
      <y>0</y>
      <width>1257</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMENU">
@@ -143,6 +149,7 @@
      <string>MENU</string>
     </property>
     <addaction name="actionAdd_Metodo_de_Pago"/>
+    <addaction name="actionAdd_Categoria_Compra"/>
    </widget>
    <addaction name="menuMENU"/>
   </widget>
@@ -158,6 +165,11 @@
   <action name="actionAdd_Metodo_de_Pago">
    <property name="text">
     <string>Add Metodo de Pago</string>
+   </property>
+  </action>
+  <action name="actionAdd_Categoria_Compra">
+   <property name="text">
+    <string>Add Categoria Compra</string>
    </property>
   </action>
  </widget>

@@ -56,8 +56,10 @@ void Compras_Widget::setBaseDatos(BaseDatos *bd)
 {
     finanzasBD = bd;
     ComprasModel=finanzasBD->TablasModel("COMPRAS");
+    ComprasModel->setFilter(global::filterBD);
     finanzasBD->createTable(BaseDatos::TABLA_COMPRAS);
     ui->tableCompras->setModel(ComprasModel);
+
       ui->tableCompras->hideColumn(0);
       ui->tableCompras->model()->sort(1);
 }

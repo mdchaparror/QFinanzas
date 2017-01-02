@@ -28,6 +28,7 @@ void Ingresos_Widget::setBaseDatos(BaseDatos *bd)
     finanzasBD = bd;
     finanzasBD->createTable(BaseDatos::TABLA_INGRESOS);
     IngresosModel=finanzasBD->TablasModel("INGRESOS");
+    IngresosModel->setFilter(global::filterBD);
     ui->tableIngresos->setModel(IngresosModel);
     ui->tableIngresos->resizeColumnsToContents();
     ui->tableIngresos->hideColumn(0);

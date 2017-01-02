@@ -17,6 +17,7 @@ public:
     static const int TABLA_INGRESOS;
     static const int TABLA_METODOSPAGOS;
     static const int TABLA_PRESUPUESTO;
+      static const int TABLA_CATEGORIA_COMPRA;
 
 signals:
     void table_changed(QString table);

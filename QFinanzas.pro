@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     compras_widget.cpp \
     ingresos_widget.cpp \
     presupuesto_widget.cpp \
-    reportexcel.cpp
+    reportexcel.cpp \
+    categoriacompra.cpp
 
 
 HEADERS  += principal.h \
@@ -47,7 +48,8 @@ HEADERS  += principal.h \
     compras_widget.h \
     ingresos_widget.h \
     presupuesto_widget.h \
-    reportexcel.h
+    reportexcel.h \
+    categoriacompra.h
 
 
 FORMS    += principal.ui \
@@ -55,7 +57,8 @@ FORMS    += principal.ui \
     amortizacion_widget.ui \
     compras_widget.ui \
     ingresos_widget.ui \
-    presupuesto_widget.ui
+    presupuesto_widget.ui \
+    categoriacompra.ui
 
 OTHER_FILES += \
     .gitignore \

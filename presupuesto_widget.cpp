@@ -12,16 +12,16 @@ Presupuesto_Widget::Presupuesto_Widget(QWidget *parent) :
     PresupuestoModel= new QSqlTableModel(this);
     delegateP = new delegatePresupuesto(this);
     ui->tablePresupuesto->setItemDelegate(delegateP);
-     ui->tablePresupuesto->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
+    ui->tablePresupuesto->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
     ui->totalGastos->setStyleSheet("background-color: rgb(255, 0, 0)");
     ui->totalIngresos->setStyleSheet("background-color: rgb(0, 0, 255)");
 
-     ui->year->setValue(QDate::currentDate().year());
+    ui->year->setValue(QDate::currentDate().year());
 
-      ui->tablePresupuesto->setContextMenuPolicy(Qt::CustomContextMenu);
+    ui->tablePresupuesto->setContextMenuPolicy(Qt::CustomContextMenu);
 
-
-       connect(ui->tablePresupuesto, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequestPresupuesto(QPoint)));
+ //dataPresupuestoChange();
+    connect(ui->tablePresupuesto, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequestPresupuesto(QPoint)));
 
 
 }
@@ -40,6 +40,7 @@ void Presupuesto_Widget::setBaseDatos(BaseDatos *bd)
     ui->mes->setCurrentIndex(QDate::currentDate().month()-1);
     ui->tablePresupuesto->hideColumn(0);
     ui->tablePresupuesto->hideColumn(1);
+    on_mes_currentTextChanged(ui->mes->currentText());
     connect(PresupuestoModel,SIGNAL(dataChanged(QModelIndex,QModelIndex)),this,SLOT(dataPresupuestoChange()));
 
 
@@ -77,8 +78,10 @@ void Presupuesto_Widget::on_removeRegPresupuesto_clicked()
 void Presupuesto_Widget::dataPresupuestoChange()
 {
 
+
     QString mes=ui->mes->currentText();
     QString filter=QString("MES='%1_%2'").arg(mes).arg(ui->year->value());
+    qDebug()<<filter;
     double totalIngresos=finanzasBD->getSumCoulmna(BaseDatos::TABLA_PRESUPUESTO,"INGRESOS",filter);
     double totalGastos=finanzasBD->getSumCoulmna(BaseDatos::TABLA_PRESUPUESTO,"GASTOS",filter);
     ui->totalGastos->setValue(totalGastos);
@@ -116,35 +119,35 @@ void Presupuesto_Widget::on_pushButton_clicked()
 {
     QList <Presupuesto> list;
 
-   int  row = PresupuestoModel->rowCount();
-   int col=PresupuestoModel->columnCount();
+    int  row = PresupuestoModel->rowCount();
+    int col=PresupuestoModel->columnCount();
 
-   for(int i=0;i<row;i++){
-       Presupuesto rowPre;
-       QModelIndex index=PresupuestoModel->index(i,colMes);
-       rowPre.setMes(PresupuestoModel->data(index).toString());
-       index=PresupuestoModel->index(i,colDetalle);
-       rowPre.setDetalle(PresupuestoModel->data(index).toString());
-       index=PresupuestoModel->index(i,colDebito);
-       rowPre.setDebito(PresupuestoModel->data(index).toDouble());
-       index=PresupuestoModel->index(i,colCredito);
-       rowPre.setCredito(PresupuestoModel->data(index).toDouble());
-       list.append(rowPre);
+    for(int i=0;i<row;i++){
+        Presupuesto rowPre;
+        QModelIndex index=PresupuestoModel->index(i,colMes);
+        rowPre.setMes(PresupuestoModel->data(index).toString());
+        index=PresupuestoModel->index(i,colDetalle);
+        rowPre.setDetalle(PresupuestoModel->data(index).toString());
+        index=PresupuestoModel->index(i,colDebito);
+        rowPre.setDebito(PresupuestoModel->data(index).toDouble());
+        index=PresupuestoModel->index(i,colCredito);
+        rowPre.setCredito(PresupuestoModel->data(index).toDouble());
+        list.append(rowPre);
 
-   }
-   if(list.isEmpty()){
-      qDebug()<<"No hay datos";
-       return;
-   }
-   Presupuesto tem=list.at(0);
-   QString mes=tem.getMes();
-   QString NameFileIN=QFileDialog::getSaveFileName(this,tr("Guardar Archivo Presupuesto"),
-                                                   QString("PRESUPUESTO.xlsx"), tr("Presupuesto(*.xlsx)"));
-   if(NameFileIN.isEmpty()){
-       qDebug()<<"No se selecciono archivo";
-       return;
-   }
-   reportes->ReportPresupuesto(mes,NameFileIN,list);
+    }
+    if(list.isEmpty()){
+        qDebug()<<"No hay datos";
+        return;
+    }
+    Presupuesto tem=list.at(0);
+    QString mes=tem.getMes();
+    QString NameFileIN=QFileDialog::getSaveFileName(this,tr("Guardar Archivo Presupuesto"),
+                                                    QString("PRESUPUESTO.xlsx"), tr("Presupuesto(*.xlsx)"));
+    if(NameFileIN.isEmpty()){
+        qDebug()<<"No se selecciono archivo";
+        return;
+    }
+    reportes->ReportPresupuesto(mes,NameFileIN,list);
 
     QDesktopServices::openUrl(QUrl("file:///" + NameFileIN));
 

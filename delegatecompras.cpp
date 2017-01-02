@@ -41,6 +41,11 @@ QWidget * DelegateCompras::createEditor(QWidget *parent, const QStyleOptionViewI
         editorInt->setMaximum(72);
         return editorInt;
     }
+    case 9:{
+           QComboBox *editorCombox= new QComboBox(parent);
+           editorCombox->addItems(global::categoriaCompra);
+           return editorCombox;
+    }
 
     }
 
@@ -119,6 +124,13 @@ void DelegateCompras::setEditorData(QWidget *editor, const QModelIndex &index) c
         break;
 
     }
+    case 9:{
+        QString categoria = index.model()->data(index,Qt::EditRole).toString();
+        QComboBox *editorMetodo=static_cast<QComboBox *>(editor);
+        editorMetodo->setCurrentText(categoria);
+        break;
+
+    }
 
     }
 
@@ -171,6 +183,14 @@ void DelegateCompras::setModelData(QWidget *editor, QAbstractItemModel *model, c
         break;
 
     }
+    case 9:{
+
+        QComboBox *categoria=static_cast<QComboBox *>(editor);
+        QString categoriaCompra=categoria->currentText();
+        model->setData(index,categoriaCompra,Qt::EditRole);
+        break;
+
+      }
 
     }
 

@@ -8,6 +8,7 @@
 #include "basedatos.h"
 #include "metodopago.h"
 #include "reportexcel.h"
+#include "categoriacompra.h"
 
 namespace Ui {
 class principal;
@@ -27,6 +28,9 @@ private slots:
     void updateMetodoPago();
 
 
+    void on_actionAdd_Categoria_Compra_triggered();
+
+    void updateCategoriaCompra();
 protected:
   virtual void	resizeEvent(QResizeEvent * event);
 
@@ -35,6 +39,9 @@ private:
     BaseDatos *finanzasBD;
     QSqlTableModel*  MetodosPagoModel;
     MetodoPago *metodoPago;
+    QSqlTableModel*  CategoriaComprasModel;
+    CategoriaCompra *categoriaCompra;
+
     ReportExcel *report;
 
 
