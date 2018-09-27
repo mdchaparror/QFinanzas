@@ -12,7 +12,7 @@ int global::porcentajeEPS=4;
 int global::porcentajeAFSP=1;
 int global::porcentajeIVA=16;
 int global::porcentajeConsumo=4;
-QString global::currentYear="2017";
+QString global::currentYear="2018";
 QString global::filterBD=QString("fecha like '%1%'").arg(global::currentYear);
 
 

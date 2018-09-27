@@ -79,3 +79,24 @@ void principal::resizeEvent(QResizeEvent *event)
     qDebug()<<event->size();
 }
 
+
+void principal::on_actionShowAmortizacion_toggled(bool arg1)
+{
+    ui->amortizacionWidget->setVisible(arg1);
+
+}
+
+void principal::on_actionCompras_toggled(bool arg1)
+{
+    ui->comprasWidget->setVisible(arg1);
+}
+
+void principal::on_actionIngresos_toggled(bool arg1)
+{
+    ui->ingresosWidget->setVisible(arg1);
+}
+
+void principal::on_actionPresupuesto_toggled(bool arg1)
+{
+    ui->presupuestoWidget->setVisible(arg1);
+}

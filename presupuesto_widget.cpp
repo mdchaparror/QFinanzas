@@ -12,9 +12,9 @@ Presupuesto_Widget::Presupuesto_Widget(QWidget *parent) :
     PresupuestoModel= new QSqlTableModel(this);
     delegateP = new delegatePresupuesto(this);
     ui->tablePresupuesto->setItemDelegate(delegateP);
-    ui->tablePresupuesto->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
-    ui->totalGastos->setStyleSheet("background-color: rgb(255, 0, 0)");
-    ui->totalIngresos->setStyleSheet("background-color: rgb(0, 0, 255)");
+//    ui->tablePresupuesto->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
+//    ui->totalGastos->setStyleSheet("background-color: rgb(255, 0, 0)");
+//    ui->totalIngresos->setStyleSheet("background-color: rgb(0, 0, 255)");
 
     ui->year->setValue(QDate::currentDate().year());
 

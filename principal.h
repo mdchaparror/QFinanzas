@@ -31,6 +31,14 @@ private slots:
     void on_actionAdd_Categoria_Compra_triggered();
 
     void updateCategoriaCompra();
+    void on_actionShowAmortizacion_toggled(bool arg1);
+
+    void on_actionCompras_toggled(bool arg1);
+
+    void on_actionIngresos_toggled(bool arg1);
+
+    void on_actionPresupuesto_toggled(bool arg1);
+
 protected:
   virtual void	resizeEvent(QResizeEvent * event);
 

@@ -19,7 +19,7 @@ Compras_Widget::Compras_Widget(QWidget *parent) :
     ui->tableCompras->resizeColumnsToContents();
     ui->tableCompras->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->tableCompras, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequestCompras(QPoint)));
-    ui->tableCompras->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
+   // ui->tableCompras->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
 }
 
 Compras_Widget::~Compras_Widget()
@@ -31,8 +31,9 @@ void Compras_Widget::on_addCompra_clicked()
 {
     compra newCompra;
     newCompra.setFecha(QDate::currentDate().toString(Qt::ISODate));
-    finanzasBD->insert(newCompra.toStringList(),BaseDatos::TABLA_COMPRAS);
+    qDebug()<<finanzasBD->insert(newCompra.toStringList(),BaseDatos::TABLA_COMPRAS);
     ui->tableCompras->model()->sort(1);
+    qDebug()<<"nueva compra";
 }
 
 void Compras_Widget::on_removeCompra_clicked()

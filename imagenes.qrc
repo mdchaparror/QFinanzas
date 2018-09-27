@@ -4,5 +4,6 @@
         <file>Imagenes/save.png</file>
         <file>Imagenes/quit.png</file>
         <file>Imagenes/excel.png</file>
+        <file>Imagenes/style.qss</file>
     </qresource>
 </RCC>

@@ -80,8 +80,8 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>400</width>
-          <height>300</height>
+          <width>200</width>
+          <height>200</height>
          </size>
         </property>
        </widget>
@@ -141,7 +141,7 @@
      <x>0</x>
      <y>0</y>
      <width>1257</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMENU">
@@ -151,15 +151,17 @@
     <addaction name="actionAdd_Metodo_de_Pago"/>
     <addaction name="actionAdd_Categoria_Compra"/>
    </widget>
+   <widget class="QMenu" name="menuVER">
+    <property name="title">
+     <string>VER</string>
+    </property>
+    <addaction name="actionShowAmortizacion"/>
+    <addaction name="actionCompras"/>
+    <addaction name="actionIngresos"/>
+    <addaction name="actionPresupuesto"/>
+   </widget>
    <addaction name="menuMENU"/>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
+   <addaction name="menuVER"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAdd_Metodo_de_Pago">
@@ -170,6 +172,50 @@
   <action name="actionAdd_Categoria_Compra">
    <property name="text">
     <string>Add Categoria Compra</string>
+   </property>
+  </action>
+  <action name="actionShowAmortizacion">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Amortizacion</string>
+   </property>
+  </action>
+  <action name="actionCompras">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Compras</string>
+   </property>
+  </action>
+  <action name="actionIngresos">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Ingresos</string>
+   </property>
+  </action>
+  <action name="actionPresupuesto">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Presupuesto</string>
    </property>
   </action>
  </widget>

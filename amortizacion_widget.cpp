@@ -6,7 +6,7 @@ Amortizacion_Widget::Amortizacion_Widget(QWidget *parent) :
     ui(new Ui::Amortizacion_Widget)
 {
     ui->setupUi(this);
-    ui->AmortizacionTable2->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
+    //ui->AmortizacionTable2->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
 }
 
 Amortizacion_Widget::~Amortizacion_Widget()

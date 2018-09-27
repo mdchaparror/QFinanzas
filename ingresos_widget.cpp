@@ -11,7 +11,7 @@ Ingresos_Widget::Ingresos_Widget(QWidget *parent) :
     delegateI = new delegateIngreso(this);
     ui->tableIngresos->setItemDelegate(delegateI);
 
-    ui->tableIngresos->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
+    //ui->tableIngresos->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
 
     ui->tableIngresos->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->tableIngresos, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequestIngreso(QPoint)));

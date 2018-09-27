@@ -60,6 +60,7 @@ bool BaseDatos::insert(QStringList registro,int tabla)
         sql.addBindValue(aux);
 
     }
+
     return sql.exec();
 }
 
