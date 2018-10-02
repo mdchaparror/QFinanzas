@@ -9,6 +9,7 @@
 #include "metodopago.h"
 #include "reportexcel.h"
 #include "categoriacompra.h"
+#include "configdialog.h"
 
 namespace Ui {
 class principal;
@@ -39,6 +40,8 @@ private slots:
 
     void on_actionPresupuesto_toggled(bool arg1);
 
+    void on_actionConfiguracion_triggered();
+
 protected:
   virtual void	resizeEvent(QResizeEvent * event);
 
@@ -49,7 +52,7 @@ private:
     MetodoPago *metodoPago;
     QSqlTableModel*  CategoriaComprasModel;
     CategoriaCompra *categoriaCompra;
-
+    configDialog * config;
     ReportExcel *report;
 
 

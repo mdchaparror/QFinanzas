@@ -9,14 +9,14 @@ class global
 public:
 
     static QString usuario;
-    static QString currentYear;
+    static int currentYear;
     static QString filterBD;
     static QString dir_bd;
-    static int porcentajeAPF; //porcentaje Aporte fondo pensiones
-    static int porcentajeEPS; //porcentaje Aporte Salud
-    static int porcentajeAFSP;//porcentaje Aporte fondo solidario pensiones
-    static int porcentajeIVA; //porcentaje inpuesto IVA
-    static int porcentajeConsumo; //porcentaje inpuesto al consumo
+    static double porcentajeAPF; //porcentaje Aporte fondo pensiones
+    static double porcentajeEPS; //porcentaje Aporte Salud
+    static double porcentajeAFSP;//porcentaje Aporte fondo solidario pensiones
+    static double porcentajeIVA; //porcentaje inpuesto IVA
+    static double porcentajeConsumo; //porcentaje inpuesto al consumo
     static QStringList metodosPago;
     static QStringList categoriaCompra;
 

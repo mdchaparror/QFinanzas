@@ -7,12 +7,12 @@ QString global::dir_bd="sqliteBD/";
 QString global::usuario="mdchaparror";
 QStringList global::metodosPago;
 QStringList global::categoriaCompra;
-int global::porcentajeAPF=4;
-int global::porcentajeEPS=4;
-int global::porcentajeAFSP=1;
-int global::porcentajeIVA=16;
-int global::porcentajeConsumo=4;
-QString global::currentYear="2018";
+double global::porcentajeAPF=4;
+double global::porcentajeEPS=4;
+double global::porcentajeAFSP=1;
+double global::porcentajeIVA=19;
+double global::porcentajeConsumo=4;
+int global::currentYear=2018;
 QString global::filterBD=QString("fecha like '%1%'").arg(global::currentYear);
 
 

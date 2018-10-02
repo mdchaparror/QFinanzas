@@ -8,7 +8,8 @@ principal::principal(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
+    config = new configDialog(this);
+    config->loadConfig();
 
     MetodosPagoModel= new QSqlTableModel(this);
     report = new ReportExcel();
@@ -99,4 +100,9 @@ void principal::on_actionIngresos_toggled(bool arg1)
 void principal::on_actionPresupuesto_toggled(bool arg1)
 {
     ui->presupuestoWidget->setVisible(arg1);
+}
+
+void principal::on_actionConfiguracion_triggered()
+{
+    config->show();
 }

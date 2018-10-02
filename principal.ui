@@ -141,7 +141,7 @@
      <x>0</x>
      <y>0</y>
      <width>1257</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuMENU">
@@ -160,8 +160,15 @@
     <addaction name="actionIngresos"/>
     <addaction name="actionPresupuesto"/>
    </widget>
+   <widget class="QMenu" name="menuCONFIGURACION">
+    <property name="title">
+     <string>CONFIGURACION</string>
+    </property>
+    <addaction name="actionConfiguracion"/>
+   </widget>
    <addaction name="menuMENU"/>
    <addaction name="menuVER"/>
+   <addaction name="menuCONFIGURACION"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAdd_Metodo_de_Pago">
@@ -218,6 +225,15 @@
     <string>Presupuesto</string>
    </property>
   </action>
+  <action name="actionConfiguracion">
+   <property name="icon">
+    <iconset resource="imagenes.qrc">
+     <normaloff>:/imagenes/Imagenes/config.png</normaloff>:/imagenes/Imagenes/config.png</iconset>
+   </property>
+   <property name="text">
+    <string>Configuracion</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -246,6 +262,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="imagenes.qrc"/>
+ </resources>
  <connections/>
 </ui>
