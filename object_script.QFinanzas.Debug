@@ -47,7 +47,7 @@ INPUT(
 ./debug\presupuesto_widget.o
 ./debug\reportexcel.o
 ./debug\categoriacompra.o
-./debug\configuracion.o
+./debug\configdialog.o
 ./debug\qrc_imagenes.o
 ./debug\moc_xlsxdocument.o
 ./debug\moc_principal.o
@@ -61,5 +61,5 @@ INPUT(
 ./debug\moc_ingresos_widget.o
 ./debug\moc_presupuesto_widget.o
 ./debug\moc_categoriacompra.o
-./debug\moc_configuracion.o
+./debug\moc_configdialog.o
 );

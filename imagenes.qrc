@@ -6,5 +6,6 @@
         <file>Imagenes/excel.png</file>
         <file>Imagenes/style.qss</file>
         <file>Imagenes/config.png</file>
+        <file>Imagenes/ico.ico</file>
     </qresource>
 </RCC>

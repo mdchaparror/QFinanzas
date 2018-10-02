@@ -63,9 +63,12 @@ FORMS    += principal.ui \
     categoriacompra.ui \
     configdialog.ui
 
-OTHER_FILES += \
+OTHER_FILES += icon.rc\
     .gitignore \
     sql.txt
 
 RESOURCES += \
     imagenes.qrc
+
+
+RC_FILE = icon.rc
