@@ -1,6 +1,8 @@
 #include "principal.h"
 #include "ui_principal.h"
 #include <QResizeEvent>
+#include <QSettings>
+#include <QDebug>
 
 principal::principal(QWidget *parent) :
     QMainWindow(parent),
@@ -9,6 +11,7 @@ principal::principal(QWidget *parent) :
     ui->setupUi(this);
 
     config = new configDialog(this);
+    loadConfiguracion();
     config->loadConfig();
 
     MetodosPagoModel= new QSqlTableModel(this);
@@ -43,6 +46,7 @@ principal::principal(QWidget *parent) :
 
 principal::~principal()
 {
+    saveConfiguracion();
     delete ui;
     finanzasBD->close();
     delete report;
@@ -84,25 +88,81 @@ void principal::resizeEvent(QResizeEvent *event)
 void principal::on_actionShowAmortizacion_toggled(bool arg1)
 {
     ui->amortizacionWidget->setVisible(arg1);
+    verAmortizacion=arg1;
+     ui->actionShowAmortizacion->setChecked(arg1);
 
 }
 
 void principal::on_actionCompras_toggled(bool arg1)
 {
     ui->comprasWidget->setVisible(arg1);
+    verCompras=arg1;
+    ui->actionCompras->setChecked(arg1);
 }
 
 void principal::on_actionIngresos_toggled(bool arg1)
 {
     ui->ingresosWidget->setVisible(arg1);
+    verIngresos=arg1;
+    ui->actionIngresos->setChecked(arg1);
 }
 
 void principal::on_actionPresupuesto_toggled(bool arg1)
 {
     ui->presupuestoWidget->setVisible(arg1);
+    verPresupuesto=arg1;
+    ui->actionPresupuesto->setChecked(arg1);
 }
 
 void principal::on_actionConfiguracion_triggered()
 {
     config->show();
+}
+
+void principal::saveConfiguracion()
+{
+    QSettings settings("mdchaparror","finanza");
+    settings.beginGroup("Mainwindow");
+    settings.setValue("usuario", global::usuario);
+    settings.setValue("year", global::currentYear);
+    settings.setValue("APF", global::porcentajeAPF);
+    settings.setValue("EPS", global::porcentajeEPS);
+    settings.setValue("AFSP", global::porcentajeAFSP);
+    settings.setValue("IVA", global::porcentajeIVA);
+    settings.setValue("CONSUMO", global::porcentajeConsumo);
+    settings.setValue("VER_PRESUPUESTO",verPresupuesto);
+    settings.setValue("VER_COMPRAS",verCompras);
+    settings.setValue("VER_AMORTIZACION",verAmortizacion);
+    settings.setValue("VER_INGRESOS",verIngresos);
+    settings.endGroup();
+    qDebug()<<"Configuracion Guardada "<<ui->presupuestoWidget->isHidden();
+
+}
+
+void principal::loadConfiguracion()
+{
+    QSettings settings("mdchaparror","finanza");
+    settings.beginGroup("Mainwindow");
+    global::usuario=settings.value("usuario").toString();
+    global::currentYear=settings.value("year").toInt();
+    global::porcentajeAPF = settings.value("APF").toDouble();
+    global::porcentajeEPS=settings.value("EPS").toDouble();
+    global::porcentajeAFSP =settings.value("AFSP").toDouble();
+    global::porcentajeIVA =settings.value("IVA").toDouble();
+    global::porcentajeConsumo =settings.value("CONSUMO").toDouble();
+    verPresupuesto=settings.value("VER_PRESUPUESTO").toBool();
+    verAmortizacion=settings.value("VER_AMORTIZACION").toBool();
+    verCompras=settings.value("VER_COMPRAS").toBool();
+    verIngresos=settings.value("VER_INGRESOS").toBool();
+
+    settings.endGroup();
+    on_actionCompras_toggled(verCompras);
+    on_actionIngresos_toggled(verIngresos);
+    on_actionPresupuesto_toggled(verPresupuesto);
+    on_actionShowAmortizacion_toggled(verAmortizacion);
+
+
+    global::filterBD=QString("fecha like '%1%'").arg(global::currentYear);
+
+    qDebug()<<"Configuracion Cargada";
 }

@@ -12,7 +12,7 @@ class configDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit configDialog(QWidget *parent = nullptr);
+    explicit configDialog(QWidget *parent = 0);
     ~configDialog();
 public slots:
     void loadConfig();

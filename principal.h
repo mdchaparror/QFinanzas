@@ -41,6 +41,8 @@ private slots:
     void on_actionPresupuesto_toggled(bool arg1);
 
     void on_actionConfiguracion_triggered();
+    void saveConfiguracion();
+    void loadConfiguracion();
 
 protected:
   virtual void	resizeEvent(QResizeEvent * event);
@@ -54,6 +56,10 @@ private:
     CategoriaCompra *categoriaCompra;
     configDialog * config;
     ReportExcel *report;
+    bool verPresupuesto;
+    bool verAmortizacion;
+    bool verCompras;
+    bool verIngresos;
 
 
 };
