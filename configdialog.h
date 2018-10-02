@@ -14,6 +14,9 @@ class configDialog : public QDialog
 public:
     explicit configDialog(QWidget *parent = 0);
     ~configDialog();
+signals:
+    void save();
+
 public slots:
     void loadConfig();
 private slots:

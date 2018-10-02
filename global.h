@@ -19,9 +19,10 @@ public:
     static double porcentajeConsumo; //porcentaje inpuesto al consumo
     static QStringList metodosPago;
     static QStringList categoriaCompra;
-
+    static QString tema;
    static void setMetodoPago(QStringList x);
     static void setCategoriaCompra(QStringList x);
+    static QString stringFromResource(const QString &resName);
 
 
 

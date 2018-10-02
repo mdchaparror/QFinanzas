@@ -22,6 +22,7 @@ void configDialog::loadConfig()
     ui->AFSP->setValue(global::porcentajeAFSP);
     ui->IVA->setValue(global::porcentajeIVA);
     ui->CONSUMO->setValue(global::porcentajeConsumo);
+    ui->temaBox->setCurrentText(global::tema);
 
 }
 
@@ -37,5 +38,6 @@ void configDialog::on_save_clicked()
     global::porcentajeIVA=ui->IVA->value();
     global::porcentajeConsumo=ui->CONSUMO->value();
     global::filterBD=QString("fecha like '%1%'").arg(global::currentYear);
-
+    global::tema=ui->temaBox->currentText();
+    emit save();
 }

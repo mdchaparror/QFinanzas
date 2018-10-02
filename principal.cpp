@@ -8,11 +8,14 @@ principal::principal(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::principal)
 {
+
     ui->setupUi(this);
 
     config = new configDialog(this);
+    connect(config,SIGNAL(save()),this,SLOT(saveConfiguracion()));
     loadConfiguracion();
-    config->loadConfig();
+
+
 
     MetodosPagoModel= new QSqlTableModel(this);
     report = new ReportExcel();
@@ -134,8 +137,10 @@ void principal::saveConfiguracion()
     settings.setValue("VER_COMPRAS",verCompras);
     settings.setValue("VER_AMORTIZACION",verAmortizacion);
     settings.setValue("VER_INGRESOS",verIngresos);
+    settings.setValue("TEMA",global::tema);
     settings.endGroup();
-    qDebug()<<"Configuracion Guardada "<<ui->presupuestoWidget->isHidden();
+     setStyleSheet(global::stringFromResource(global::tema));
+    qDebug()<<"Configuracion Guardada ";
 
 }
 
@@ -150,6 +155,7 @@ void principal::loadConfiguracion()
     global::porcentajeAFSP =settings.value("AFSP").toDouble();
     global::porcentajeIVA =settings.value("IVA").toDouble();
     global::porcentajeConsumo =settings.value("CONSUMO").toDouble();
+    global::tema=settings.value("TEMA").toString();
     verPresupuesto=settings.value("VER_PRESUPUESTO").toBool();
     verAmortizacion=settings.value("VER_AMORTIZACION").toBool();
     verCompras=settings.value("VER_COMPRAS").toBool();
@@ -163,6 +169,6 @@ void principal::loadConfiguracion()
 
 
     global::filterBD=QString("fecha like '%1%'").arg(global::currentYear);
-
+    setStyleSheet(global::stringFromResource(global::tema));
     qDebug()<<"Configuracion Cargada";
 }
