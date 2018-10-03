@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Finanzas Personales</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="imagenes.qrc">
+    <normaloff>:/imagenes/Imagenes/ico.ico</normaloff>:/imagenes/Imagenes/ico.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">

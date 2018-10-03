@@ -19,7 +19,7 @@ Compras_Widget::Compras_Widget(QWidget *parent) :
     ui->tableCompras->resizeColumnsToContents();
     ui->tableCompras->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->tableCompras, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(contextMenuRequestCompras(QPoint)));
-   // ui->tableCompras->setStyleSheet("alternate-background-color: rgb(170, 255, 255)");
+
 }
 
 Compras_Widget::~Compras_Widget()
@@ -48,6 +48,13 @@ void Compras_Widget::on_removeCompra_clicked()
     }
 }
 
+void Compras_Widget::addSoporte()
+{
+
+}
+
+
+
 void Compras_Widget::on_saveCompras_clicked()
 {
 
@@ -69,7 +76,10 @@ void Compras_Widget::contextMenuRequestCompras(QPoint pos)
     QMenu *menu = new QMenu(this);
     menu->setAttribute(Qt::WA_DeleteOnClose);
     menu->addAction(QIcon(":/imagenes/Imagenes/add.png"),"Añadir Compra", this, SLOT(on_addCompra_clicked()));
-    if(ui->tableCompras->currentIndex().isValid())
+    if(ui->tableCompras->currentIndex().isValid()){
         menu->addAction(QIcon(":/imagenes/Imagenes/quit.png"),"Remover Compra", this, SLOT(on_removeCompra_clicked()));
+       // menu->addAction(QIcon(":/imagenes/Imagenes/quit.png"),"Añadir Soporte", this, SLOT(addSoporte()));
+    }
+
     menu->popup(ui->tableCompras->mapToGlobal(pos));
 }

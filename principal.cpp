@@ -13,6 +13,7 @@ principal::principal(QWidget *parent) :
 
     config = new configDialog(this);
     connect(config,SIGNAL(save()),this,SLOT(saveConfiguracion()));
+
     loadConfiguracion();
 
 
@@ -124,7 +125,7 @@ void principal::on_actionConfiguracion_triggered()
 
 void principal::saveConfiguracion()
 {
-    QSettings settings("mdchaparror","finanza");
+    QSettings settings("unelectronica","finanza");
     settings.beginGroup("Mainwindow");
     settings.setValue("usuario", global::usuario);
     settings.setValue("year", global::currentYear);
@@ -146,7 +147,7 @@ void principal::saveConfiguracion()
 
 void principal::loadConfiguracion()
 {
-    QSettings settings("mdchaparror","finanza");
+    QSettings settings("unelectronica","finanza");
     settings.beginGroup("Mainwindow");
     global::usuario=settings.value("usuario").toString();
     global::currentYear=settings.value("year").toInt();
@@ -166,6 +167,7 @@ void principal::loadConfiguracion()
     on_actionIngresos_toggled(verIngresos);
     on_actionPresupuesto_toggled(verPresupuesto);
     on_actionShowAmortizacion_toggled(verAmortizacion);
+    config->loadConfig();
 
 
     global::filterBD=QString("fecha like '%1%'").arg(global::currentYear);

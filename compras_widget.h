@@ -24,6 +24,7 @@ private slots:
     void on_addCompra_clicked();
 
     void on_removeCompra_clicked();
+    void addSoporte();
 
     void on_saveCompras_clicked();
 
